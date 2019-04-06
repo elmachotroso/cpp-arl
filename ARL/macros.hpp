@@ -1,5 +1,5 @@
-#ifndef ARL_macros_h
-#define ARL_macros_h
+#ifndef ARL_MACROS_HPP
+#define ARL_MACROS_HPP
 
 #define SAFEDELETE(x) if((x) != nullptr) { \
     delete (x); \
@@ -9,4 +9,4 @@
     delete [] (x); \
     (x) = nullptr; }
 
-#endif //ARL_macros_h
+#endif //ARL_MACROS_HPP

@@ -1,5 +1,5 @@
-#ifndef ARL_OBJECT_H
-#define ARL_OBJECT_H
+#ifndef ARL_OBJECT_HPP
+#define ARL_OBJECT_HPP
 
 namespace ARL
 {
@@ -12,10 +12,10 @@ namespace ARL
         ~Object();
 
         protected:
-        Object * parent = nullptr;
-        Object ** siblings = nullptr;
-        int siblingsCount = 0;
+        Object * parent;
+        Object ** siblings;
+        int siblingsCount;
     };
 }
 
-#endif
+#endif //ARL_OBJECT_HPP

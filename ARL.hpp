@@ -4,11 +4,11 @@
 /// Also this is my personal attempt to jump to C++11, 14, 17, and in the future 20
 /// and leave my Microsoft C99 C98 habits :P
 
-#ifndef ARL_H
-#define ARL_H
+#ifndef ARL_HPP
+#define ARL_HPP
 
-#include "ARL/redirections.h"
-#include "ARL/macros.h"
-#include "ARL/Object.h"
+#include "ARL/redirections.hpp"
+#include "ARL/macros.hpp"
+#include "ARL/Object.hpp"
 
-#endif //ARL_H
+#endif //ARL_HPP

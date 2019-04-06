@@ -1,5 +1,5 @@
-#include "Object.h"
-#include "macros.h"
+#include "Object.hpp"
+#include "macros.hpp"
 
 ARL::Object::Object()
     : Object(nullptr)
