@@ -7,35 +7,35 @@ ARL::Object::Object()
 }
 
 ARL::Object::Object(Object *parentToAttach)
-    : parent(parentToAttach)
-    , siblings(nullptr)
-    , siblingsCount(0)
+    : _parent(parentToAttach)
+    , _siblings(nullptr)
+    , _siblingsCount(0)
 {
 }
 
 ARL::Object::Object(const Object & copy)
 {
-    parent = copy.parent;
-    siblingsCount = copy.siblingsCount;
-    siblings = new Object*[siblingsCount];
-    for(int i = 0; i < siblingsCount; ++i)
+    _parent = copy._parent;
+    _siblingsCount = copy._siblingsCount;
+    _siblings = new Object*[_siblingsCount];
+    for(int i = 0; i < _siblingsCount; ++i)
     {
-        siblings[i] = new Object(copy.siblings[i]);
+        _siblings[i] = new Object(copy._siblings[i]);
     }
 }
 
 ARL::Object::~Object()
 {
-    if(siblings != nullptr)
+    if(_siblings != nullptr)
     {
-        for(int i = 0; i < siblingsCount; ++i)
+        for(int i = 0; i < _siblingsCount; ++i)
         {
-            if(siblings[i] != nullptr)
+            if(_siblings[i] != nullptr)
             {
-                SAFEDELETE(siblings[i]);
+                SAFEDELETE(_siblings[i]);
             }
         }
 
-        SAFEDELETE_ARRAY(siblings);
+        SAFEDELETE_ARRAY(_siblings);
     }
 }

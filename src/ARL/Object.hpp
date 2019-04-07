@@ -12,9 +12,9 @@ namespace ARL
         ~Object();
 
         protected:
-        Object * parent;
-        Object ** siblings;
-        int siblingsCount;
+        Object * _parent;
+        Object ** _siblings;
+        int _siblingsCount;
     };
 }
 
