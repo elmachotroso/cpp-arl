@@ -1,41 +1,59 @@
 #include "Object.hpp"
 #include "macros.hpp"
 
-ARL::Object::Object()
+#include<algorithm>
+
+using namespace ARL;
+
+Object::Object()
     : Object(nullptr)
 {
 }
 
-ARL::Object::Object(Object *parentToAttach)
-    : _parent(parentToAttach)
-    , _siblings(nullptr)
-    , _siblingsCount(0)
+Object::Object(Object *parentToAttach)
+    : Object(parentToAttach, string(""))
 {
 }
 
-ARL::Object::Object(const Object & copy)
+Object::Object(Object *parentToAttach, string const & name)
+	: _parent(parentToAttach)
+	, _children(vector< Object *>(8))
+	, _name(name)
+{
+
+}
+
+Object::Object(const Object & copy)
 {
     _parent = copy._parent;
-    _siblingsCount = copy._siblingsCount;
-    _siblings = new Object*[_siblingsCount];
-    for(int i = 0; i < _siblingsCount; ++i)
-    {
-        _siblings[i] = new Object(copy._siblings[i]);
-    }
+	_children = copy._children;
+	_name = copy._name;
 }
 
-ARL::Object::~Object()
+Object::~Object()
 {
-    if(_siblings != nullptr)
+    for(uint32_t i = 0; i < _children.size(); ++i)
     {
-        for(int i = 0; i < _siblingsCount; ++i)
+        if(_children[i] != nullptr)
         {
-            if(_siblings[i] != nullptr)
-            {
-                SAFEDELETE(_siblings[i]);
-            }
+            SAFEDELETE(_children[i]);
         }
-
-        SAFEDELETE_ARRAY(_siblings);
     }
+	_children.clear();
+}
+
+void Object::AddChild(Object * childObject)
+{
+	
+}
+
+void Object::RemoveChild(Object * childObject)
+{
+
+}
+
+ARL::Object & ARL::Object::GetChild(int index)
+{
+	Object * child = nullptr;
+	return *child;
 }

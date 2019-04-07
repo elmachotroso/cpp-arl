@@ -11,26 +11,32 @@ bool Test();
 int main(int argc, char * argv[])
 {
     std::cout << "C++ cout sucks!" << std::endl;
-    printf("C printf is still better! %s", "true");
+    printf("C printf is still better! %s\n", "true");
 
-    return Test() ? 0 : 1;
+	bool result = Test();
+	
+	char a;
+	std::cin >> a;
+
+    return result ? 0 : 1;
 }
 
 bool Test()
 {
-    ARL::Object * root = new ARL::Object();
+    ARL::Object * root = new ARL::Object(nullptr, string("margarita"));
     if(root == nullptr)
     {
-        printf("Test failed: root is null!");
+        printf("Test failed: root is null!\n");
         return false;
     }
+	printf("The name of the root object is: %s\n", root->GetName().c_str());
     SAFEDELETE(root);
     if(root != nullptr)
     {
-        printf("Test failed: root is not null!");
+        printf("Test failed: root is not null!\n");
         return false;
     }
 
-    printf("Test finished!");
+    printf("Test finished!\n");
     return true;
 }

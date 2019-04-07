@@ -6,6 +6,8 @@
 #define ARL_REDIRECTIONS_HPP
 
 // using stl at the moment while I don't have my very own uber-fast classes :p
+#include<vector>
+#include<string>
 #define vector std::vector
 #define string std::string
 
