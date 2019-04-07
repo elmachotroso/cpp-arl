@@ -16,7 +16,7 @@ namespace ARL
 		Object(Object *parentToAttach, string const & name);
         Object(Object *parentToAttach);
         Object(const Object & copy);
-        ~Object();
+        virtual ~Object();
 
 		inline Object & SetName(string const & name);
 		inline string GetName() const;
@@ -24,6 +24,10 @@ namespace ARL
 		void AddChild(Object * childObject);
 		void RemoveChild(Object * childObject);
 		Object & GetChild(int index);
+
+#ifdef DEBUG_VERBOSE
+		virtual string ToString() const;
+#endif //DEBUG_VERBOSE
 
         protected:
         Object * _parent;

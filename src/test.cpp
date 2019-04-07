@@ -3,16 +3,13 @@
 /// This is meant as a test case file.
 
 #include <iostream>
-#include <stdio.h>
+#include <chrono>
 #include "ARL.hpp"
 
 bool Test();
 
 int main(int argc, char * argv[])
 {
-    std::cout << "C++ cout sucks!" << std::endl;
-    printf("C printf is still better! %s\n", "true");
-
 	bool result = Test();
 	
 	char a;
@@ -23,20 +20,27 @@ int main(int argc, char * argv[])
 
 bool Test()
 {
+	auto start = std::chrono::steady_clock::now();
+
     ARL::Object * root = new ARL::Object(nullptr, string("margarita"));
     if(root == nullptr)
     {
-        printf("Test failed: root is null!\n");
+        std::cout << "Test failed: root is null!\n";
         return false;
     }
-	printf("The name of the root object is: %s\n", root->GetName().c_str());
+#ifdef DEBUG_VERBOSE
+	std::cout << root->ToString() << std::endl;
+#endif //DEBUG_VERBOSE
+	
     SAFEDELETE(root);
     if(root != nullptr)
     {
-        printf("Test failed: root is not null!\n");
+		std::cout << "Test failed: root is not null!\n";
         return false;
     }
-
-    printf("Test finished!\n");
+	auto end = std::chrono::steady_clock::now();
+	auto deltaTime = end - start;
+	int64_t seconds = std::chrono::duration_cast<std::chrono::nanoseconds>(deltaTime).count();
+	std::cout << "Test finished in " << seconds << "ns\n";
     return true;
 }

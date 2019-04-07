@@ -32,8 +32,15 @@ Object::Object(const Object & copy)
 
 Object::~Object()
 {
+	/*std::transform(_children.begin(), _children.end(), _children.begin(), [](Object * child) -> Object * {
+		if (child != nullptr)
+		{
+			SAFEDELETE(child);
+		}
+		return child;
+	});*/
     for(uint32_t i = 0; i < _children.size(); ++i)
-    {
+    {		
         if(_children[i] != nullptr)
         {
             SAFEDELETE(_children[i]);
@@ -44,16 +51,37 @@ Object::~Object()
 
 void Object::AddChild(Object * childObject)
 {
-	
+	if (childObject == nullptr)
+	{
+		return;
+	}
+	_children.push_back(childObject);
 }
 
 void Object::RemoveChild(Object * childObject)
 {
-
+	if (childObject == nullptr)
+	{
+		return;
+	}
+	auto foundChild = std::find(_children.begin(), _children.end(), childObject);
+	if (foundChild != _children.end())
+	{
+		_children.erase(foundChild);
+	}
 }
 
-ARL::Object & ARL::Object::GetChild(int index)
+Object & Object::GetChild(int index)
 {
 	Object * child = nullptr;
 	return *child;
 }
+
+#ifdef DEBUG_VERBOSE
+string Object::ToString() const
+{
+	string builder;
+	builder += "";
+	return builder;
+}
+#endif //DEBUG_VERBOSE
