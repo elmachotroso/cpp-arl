@@ -7,8 +7,8 @@
 #ifndef ARL_HPP
 #define ARL_HPP
 
-#include "ARL/redirections.hpp"
-#include "ARL/macros.hpp"
-#include "ARL/Object.hpp"
+#include "redirections.hpp"
+#include "macros.hpp"
+#include "Object.hpp"
 
 #endif //ARL_HPP
