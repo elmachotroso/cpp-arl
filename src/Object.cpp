@@ -1,7 +1,7 @@
 #include "Object.hpp"
 #include "macros.hpp"
 
-#include<algorithm>
+#include <algorithm>
 
 using namespace ARL;
 

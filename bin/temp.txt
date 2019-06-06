@@ -1,0 +1,2 @@
+Temporary folder to avoid empty folders. Delete this if this
+folder is no longer empty.

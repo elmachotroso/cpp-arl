@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "bin"
+		},
+		{
+			"path": "include"
+		},
+		{
+			"path": "src"
+		}
+	],
+	"settings": {}
+}
